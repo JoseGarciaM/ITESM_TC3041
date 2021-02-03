@@ -1,0 +1,62 @@
+{
+  "name": "maneki-neko",
+  "version": "1.0.0",
+  "description": "Maneki Neko Design System by Joselo",
+  "author": "Jose Carlos Garcia Mendizabal",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^4.0.0",
+    "@headlessui/react": "^0.2.0",
+    "@tailwindcss/typography": "^0.4.0",
+    "autoprefixer": "^10.2.3",
+    "classnames": "^2.2.6",
+    "cssnano": "^4.1.10",
+    "next": "10.0.6",
+    "next-compose-plugins": "^2.2.1",
+    "next-pwa": "^5.0.5",
+    "next-seo": "^4.18.0",
+    "next-translate": "^1.0.1",
+    "postcss": "^8.2.4",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^14.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "preact": "^10.5.12",
+    "react": "^17.0.1",
+    "react-cool-dimensions": "^1.2.0",
+    "react-dom": "^17.0.1",
+    "react-smooth-scroll-hook": "^1.3.4",
+    "swr": "^0.4.1",
+    "tailwindcss": "^2.0.2",
+    "tua-body-scroll-lock": "^1.2.0",
+    "webpack": "^5.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@types/react": "^17.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "@typescript-eslint/parser": "^4.14.2",
+    "eslint": "^7.19.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-jsdoc": "^31.4.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "precss": "^4.0.0",
+    "prettier": "^2.2.1",
+    "tailwindcss-font-inter": "^2.0.0",
+    "tailwindcss-margin-safe": "^1.0.1",
+    "tailwindcss-padding-safe": "^1.0.5",
+    "typescript": "^4.1.3"
+  },
+  "prettier": {
+    "arrowParens": "always",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none"
+  }
+}

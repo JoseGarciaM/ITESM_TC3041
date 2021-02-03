@@ -1,0 +1,11 @@
+{
+  "name": "TC3041",
+  "short_name": "TC3041",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null
+}
