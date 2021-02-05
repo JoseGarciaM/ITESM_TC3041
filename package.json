@@ -2,7 +2,7 @@
   "name": "tc3041",
   "version": "1.0.0",
   "description": "TC3041",
-  "author": "Jose Carlos Garcia Mendizabal",
+  "author": "equipo7",
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
