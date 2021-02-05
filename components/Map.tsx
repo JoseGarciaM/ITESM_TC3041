@@ -89,8 +89,8 @@ export default function Map({setDataBounds, hackafests, highlightedId}: PropsInt
               <img
                 src={
                   highlightedId === hackafest.id ?
-                    '/home-color.svg' :
-                    '/home-solid.svg'
+                    '/svg/marker-color.svg' :
+                    '/svg/marker-solid.svg'
                 }
                 alt="hackafest"
                 className="w-8"

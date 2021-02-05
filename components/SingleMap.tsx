@@ -47,7 +47,7 @@ export default function SingleMap({hackafest, nearby}: PropsInterface) {
             type="button"
             style={{width: '30px', height: '30px', fontSize: '30px'}}
           >
-            <img src="/home-color.svg" className="w-8" alt="selected hackafest" />
+            <img src="/svg/marker-color.svg" className="w-8" alt="selected hackafest" />
           </button>
         </Marker>
 
@@ -61,7 +61,7 @@ export default function SingleMap({hackafest, nearby}: PropsInterface) {
           >
             <Link href={`/hackafests/${near.id}`}>
               <a style={{width: '30px', height: '30px', fontSize: '30px'}}>
-                <img src="/home-solid.svg" className="w-8" alt="nearby hackafest" />
+                <img src="/svg/marker-solid.svg" className="w-8" alt="nearby hackafest" />
               </a>
             </Link>
           </Marker>
