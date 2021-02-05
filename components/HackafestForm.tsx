@@ -214,13 +214,13 @@ export default function HackafestForm({hackafest}: PropsInterface) {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>
+    <form className="mx-auto max-w-xl py-4" onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="text-xl">
         {hackafest ? `Editing ${hackafest.address}` : 'Add a New Hackafest'}
       </h1>
 
-      <div>
-        <label htmlFor="search">
+      <div className="mt-4">
+        <label htmlFor="search" className="block">
           Search for your address
         </label>
         <SearchBox
@@ -236,9 +236,10 @@ export default function HackafestForm({hackafest}: PropsInterface) {
 
       {address && (
         <>
-          <div>
+          <div className="mt-4">
             <label
               htmlFor="image"
+              className="p-4 border-dashed border-4 border-gray-600 block cursor-pointer"
             >
               Click to add image (16:9)
             </label>
@@ -268,9 +269,12 @@ export default function HackafestForm({hackafest}: PropsInterface) {
             {previewImage ? (
               <img
                 src={previewImage}
+                className="mt-4 object-cover"
+                style={{width: '576px', height: `${(9 / 16) * 576}px`}}
               />
             ) : hackafest ? (
               <Image
+                className="mt-4"
                 cloudName={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}
                 publicId={hackafest.publicId}
                 alt={hackafest.address}
@@ -286,8 +290,8 @@ export default function HackafestForm({hackafest}: PropsInterface) {
             {errors.image && <p>{errors.image.message}</p>}
           </div>
 
-          <div>
-            <label htmlFor="title">
+          <div className="mt-4">
+            <label htmlFor="title" className="block">
               Title
             </label>
             <input
@@ -301,8 +305,8 @@ export default function HackafestForm({hackafest}: PropsInterface) {
             {errors.title && <p>{errors.title.message}</p>}
           </div>
 
-          <div>
-            <label htmlFor="time">
+          <div className="mt-4">
+            <label htmlFor="time" className="block">
               Time
             </label>
             <input
@@ -316,8 +320,8 @@ export default function HackafestForm({hackafest}: PropsInterface) {
             {errors.time && <p>{errors.time.message}</p>}
           </div>
 
-          <div>
-            <label htmlFor="date">
+          <div className="mt-4">
+            <label htmlFor="date" className="block">
               Date
             </label>
             <input
@@ -333,12 +337,13 @@ export default function HackafestForm({hackafest}: PropsInterface) {
 
           <div className="mt-4">
             <button
+              className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-4 rounded"
               type="submit"
               disabled={submitting}
             >
               Save
             </button>{' '}
-            <Link href={hackafest ? `/hackafest/${hackafest.id}` : '/'}>
+            <Link href={hackafest ? `/hackafests/${hackafest.id}` : '/'}>
               <a>Cancel</a>
             </Link>
           </div>
