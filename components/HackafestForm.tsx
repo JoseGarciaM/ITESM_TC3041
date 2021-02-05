@@ -160,7 +160,7 @@ export default function HackafestForm({hackafest}: PropsInterface) {
       });
 
       if (hackafestData?.createHackafest) {
-        router.push(`/hackafest/${hackafestData.createHackafest.id}`);
+        router.push(`/hackafests/${hackafestData.createHackafest.id}`);
       }
     }
   };
@@ -200,7 +200,7 @@ export default function HackafestForm({hackafest}: PropsInterface) {
     });
 
     if (hackafestData?.updateHackafest) {
-      router.push(`/hackafest/${currentHackafest.id}`);
+      router.push(`/hackafests/${currentHackafest.id}`);
     }
   };
 
