@@ -8,7 +8,7 @@ import {
 import {useRouter} from 'next/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import {client, removeTokenCookie, setTokenCookie} from 'firebase';
+import {client, removeTokenCookie, setTokenCookie} from 'lib/firebase';
 
 client();
 

@@ -1,5 +1,5 @@
 {
-  "name": "TC3041",
+  "name": "tc3041",
   "version": "1.0.0",
   "description": "TC3041",
   "author": "Jose Carlos Garcia Mendizabal",
@@ -8,6 +8,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "codegen": "apollo client:codegen --target typescript --localSchemaFile schema.gql --outputFlat --includes \"graphql/**\" --excludes \"graphql/schema/generated/**\" graphql/schema/generated",
+    "codegen:watch": "yarn codegen --watch",
     "db:init": "yarn prisma init",
     "db:generate": "yarn prisma generate",
     "db:migrate:new": "yarn prisma migrate save --experimental",

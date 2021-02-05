@@ -6,11 +6,11 @@ import {useApollo} from 'apollo/client';
 import {AuthProvider} from 'context/user';
 
 export default function MyApp({Component, pageProps}: AppProps) {
-  const apolloClient = useApollo();
+  const client = useApollo();
 
   return (
     <AuthProvider>
-      <ApolloProvider client={apolloClient}>
+      <ApolloProvider client={client}>
         <Head>
           <meta charSet="utf-8" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

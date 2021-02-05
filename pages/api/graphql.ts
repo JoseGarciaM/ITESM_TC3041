@@ -4,7 +4,7 @@ import {ApolloServer} from 'apollo-server-micro';
 import {schema} from 'graphql/schema';
 import {Context} from 'graphql/schema/context';
 import {prisma} from 'prisma/client';
-import {loadIdToken} from 'firebase/admin';
+import {loadIdToken} from 'lib/firebase/admin';
 
 const server = new ApolloServer({
   schema,

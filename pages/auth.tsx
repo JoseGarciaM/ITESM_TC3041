@@ -1,7 +1,7 @@
 import AppLayout from 'layouts/app';
 import FirebaseAuth from 'components/FirebaseAuth';
 import {GetServerSideProps, NextApiRequest} from 'next';
-import {loadIdToken} from 'firebase/admin';
+import {loadIdToken} from 'lib/firebase/admin';
 
 export default function Auth() {
   return <AppLayout main={<FirebaseAuth />} />;

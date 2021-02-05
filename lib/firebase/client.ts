@@ -1,6 +1,5 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/analytics';
 
 const FIREBASE_CONFIG = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -15,9 +14,4 @@ const FIREBASE_CONFIG = {
 
 export default function client() {
   !firebase.apps.length && firebase.initializeApp(FIREBASE_CONFIG);
-
-  if (typeof window !== 'undefined' && !firebase.apps.length) {
-    firebase.initializeApp(FIREBASE_CONFIG);
-    if ('measurementId' in FIREBASE_CONFIG) firebase.analytics();
-  }
 }

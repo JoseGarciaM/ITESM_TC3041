@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable new-cap */
 import {
   ObjectType,
   InputType,
@@ -39,7 +41,7 @@ class BoundsInput {
 }
 
 @InputType()
-class HouseInput {
+class HackafestInput {
   @Field((_type) => String)
   address!: string;
 
@@ -49,12 +51,18 @@ class HouseInput {
   @Field((_type) => CoordinatesInput)
   coordinates!: CoordinatesInput;
 
-  @Field((_type) => Int)
-  bedrooms!: number;
+  @Field((_type) => String)
+  title!: string;
+
+  @Field((_type) => String)
+  date!: string;
+
+  @Field((_type) => String)
+  time!: string;
 }
 
 @ObjectType()
-class House {
+class Hackafest {
   @Field((_type) => ID)
   id!: number;
 
@@ -79,17 +87,23 @@ class House {
     return parts[parts.length - 1];
   }
 
-  @Field((_type) => Int)
-  bedrooms!: number;
+  @Field((_type) => String)
+  title!: string;
 
-  @Field((_type) => [House])
+  @Field((_type) => String)
+  time!: string;
+
+  @Field((_type) => String)
+  date!: string;
+
+  @Field((_type) => [Hackafest])
   async nearby(@Ctx() ctx: Context) {
     const bounds = getBoundsOfDistance(
         {latitude: this.latitude, longitude: this.longitude},
         10000,
     );
 
-    return ctx.prisma.house.findMany({
+    return ctx.prisma.hackafest.findMany({
       where: {
         latitude: {gte: bounds[0].latitude, lte: bounds[1].latitude},
         longitude: {gte: bounds[0].longitude, lte: bounds[1].longitude},
@@ -101,15 +115,15 @@ class House {
 }
 
 @Resolver()
-export class HouseResolver {
-  @Query((_returns) => House, {nullable: true})
-  async house(@Arg('id') id: string, @Ctx() ctx: Context) {
-    return ctx.prisma.house.findOne({where: {id: parseInt(id, 10)}});
+export class HackafestResolver {
+  @Query((_returns) => Hackafest, {nullable: true})
+  async hackafest(@Arg('id') id: string, @Ctx() ctx: Context) {
+    return ctx.prisma.hackafest.findUnique({where: {id: parseInt(id, 10)}});
   }
 
-  @Query((_returns) => [House], {nullable: false})
-  async houses(@Arg('bounds') bounds: BoundsInput, @Ctx() ctx: Context) {
-    return ctx.prisma.house.findMany({
+  @Query((_returns) => [Hackafest], {nullable: false})
+  async hackafests(@Arg('bounds') bounds: BoundsInput, @Ctx() ctx: Context) {
+    return ctx.prisma.hackafest.findMany({
       where: {
         latitude: {gte: bounds.sw.latitude, lte: bounds.ne.latitude},
         longitude: {gte: bounds.sw.longitude, lte: bounds.ne.longitude},
@@ -119,60 +133,68 @@ export class HouseResolver {
   }
 
   @Authorized()
-  @Mutation((_returns) => House, {nullable: true})
-  async createHouse(
-    @Arg('input') input: HouseInput,
+  @Mutation((_returns) => Hackafest, {nullable: true})
+  async createHackafest(
+    @Arg('input') input: HackafestInput,
     @Ctx() ctx: AuthorizedContext,
   ) {
-    return await ctx.prisma.house.create({
+    return await ctx.prisma.hackafest.create({
       data: {
         userId: ctx.uid,
         image: input.image,
         address: input.address,
         latitude: input.coordinates.latitude,
         longitude: input.coordinates.longitude,
-        bedrooms: input.bedrooms,
+        title: input.title,
+        time: input.time,
+        date: input.date,
       },
     });
   }
 
   @Authorized()
-  @Mutation((_returns) => House, {nullable: true})
-  async updateHouse(
+  @Mutation((_returns) => Hackafest, {nullable: true})
+  async updateHackafest(
     @Arg('id') id: string,
-    @Arg('input') input: HouseInput,
+    @Arg('input') input: HackafestInput,
     @Ctx() ctx: AuthorizedContext,
   ) {
-    const houseId = parseInt(id, 10);
-    const house = await ctx.prisma.house.findOne({where: {id: houseId}});
+    const hackafestId = parseInt(id, 10);
+    const hackafest = await ctx.prisma.hackafest.findUnique({
+      where: {id: hackafestId},
+    });
 
-    if (!house || house.userId !== ctx.uid) return null;
+    if (!hackafest || hackafest.userId !== ctx.uid) return null;
 
-    return await ctx.prisma.house.update({
-      where: {id: houseId},
+    return await ctx.prisma.hackafest.update({
+      where: {id: hackafestId},
       data: {
         image: input.image,
         address: input.address,
         latitude: input.coordinates.latitude,
         longitude: input.coordinates.longitude,
-        bedrooms: input.bedrooms,
+        title: input.title,
+        time: input.time,
+        date: input.date,
       },
     });
   }
 
   @Authorized()
   @Mutation((_returns) => Boolean, {nullable: false})
-  async deleteHouse(
+  async deleteHackafest(
     @Arg('id') id: string,
     @Ctx() ctx: AuthorizedContext,
   ): Promise<boolean> {
-    const houseId = parseInt(id, 10);
-    const house = await ctx.prisma.house.findOne({where: {id: houseId}});
+    const hackafestId = parseInt(id, 10);
+    const hackafest = await ctx.prisma.hackafest.findUnique({
+      where: {id: hackafestId},
+    });
 
-    if (!house || house.userId !== ctx.uid) return false;
+    if (!hackafest || hackafest.userId !== ctx.uid) return false;
 
-    await ctx.prisma.house.delete({
-      where: {id: houseId},
+    await ctx.prisma.hackafest.delete({
+      where: {id: hackafestId},
     });
     return true;
   }
