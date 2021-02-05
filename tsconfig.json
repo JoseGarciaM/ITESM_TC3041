@@ -18,6 +18,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
+    "typeRoots": ["react-map-gl"],
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
