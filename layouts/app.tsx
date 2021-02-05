@@ -21,9 +21,6 @@ const AppLayout: FunctionComponent<IProps> = ({main}) => {
           {authenticated ? (
             <>
               <Link href="/hackafests/add">
-                <a>Hackweets</a>
-              </Link>
-              <Link href="/hackafests/add">
                 <a>Hackfests</a>
               </Link>
               <button onClick={logout}>Logout</button>
