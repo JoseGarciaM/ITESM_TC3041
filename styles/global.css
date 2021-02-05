@@ -1,10 +1,11 @@
 :root {
   --color-primary: #B8E600;
 }
-
+/* purgecss start ignore */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* purgecss end ignore */
 
 @layer utilities {
 	@variants responsive {
